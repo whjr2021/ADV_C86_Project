@@ -1,5 +1,4 @@
 var grades = [];
-        //update scores with scores, first, last, sort by last
         var update_scores = function () {
            var val = get_item_list(grades);
            document.getElementById("scores").value = val;
@@ -7,10 +6,8 @@ var grades = [];
            document.getElementById("score").value = "";
            document.getElementById("student_name").focus();
         }    
-        //function to add last, first, score to studentGrade
         var student_grade_add_click = function() {
         var last = document.getElementById("student_name").value;
-               //var first = document.getElementById('first_name').value;
                var score = parseFloat(document.getElementById('score').value);
                 grades.push ([last, score]);  
                 update_scores();
@@ -31,29 +28,28 @@ var grades = [];
            }
            return list;
         }
+
+        function getAverageScore(grades){ 
         
-        //average function
-        function getAverageScore(grades){ //function-takes grades array
-        
-        var numberOfStudents = grades.length; //declare variable along length  of array for number of students
-        var sum = 0; //set sum to zero
-        if(numberOfStudents > 0) { // step through grades if > 0 students
-            for(var i=0; i < numberOfStudents; i++) {//increment by 1 through grades
-                sum += grades[i][1]; //add each score to sum
+        var numberOfStudents = grades.length; 
+        var sum = 0; 
+        if(numberOfStudents > 0) { 
+            for(var i=0; i < numberOfStudents; i++) {
+                sum += grades[i][1]; 
             }
-        return sum/numberOfStudents; //divide total of sum by how many students
+        return sum/numberOfStudents; 
         }
-        return 0; // if no students, return 0
+        return 0; 
         }
         
         function clear_click()
         {
                 document.getElementById("form").reset();
                 document.getElementById("average_score").value="";
-                grades.splice(0, grades.length);  //TO CLEAR ARRAY AS WELL AS FORM
+                grades.splice(0, grades.length);  
         }
         
-        var sort_click = function ()  //ENTIRE FUNCTION TO SORT ARRAY AND REPRINT
+        var sort_click = function () 
         {
         grades.sort();
         update_scores();
@@ -64,4 +60,3 @@ var grades = [];
                 document.getElementById("sort_button").onclick = sort_click;      
                 document.getElementById("student_name").focus();
         }
-        
